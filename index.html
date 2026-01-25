@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaytun | Modern Moroccan Fine Dining — Fez</title>
+    
+    <meta name="description" content="Experience an uncompromising journey of Moroccan flavor. Zaytun offers an exclusive tasting menu and rare vintages in the heart of Fez.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,500&family=Montserrat:wght@100;200;300&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
+    <style>
+        :root {
+            --gold: #C5A059;
+            --obsidian: #0F1112;
+            --alabaster: #F4F1ED;
+            --slate: #2C3E50;
+        }
+
+        /* Essential for Lenis */
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        body {
+            background-color: var(--obsidian);
+            color: var(--alabaster);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+
+        /* Custom Cursor */
+        #cursor-dot { width: 6px; height: 6px; background: var(--gold); position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000; }
+        #cursor-ring { width: 40px; height: 40px; border: 1px solid var(--gold); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease-out; }
+
+        /* Performance Reveals */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Menu Item Hover */
+        .menu-item { border-bottom: 1px solid rgba(197, 160, 89, 0.2); transition: border 0.4s ease, padding 0.4s ease; }
+        .menu-item:hover { border-bottom: 1px solid var(--gold); padding-left: 1rem; }
+
+        /* FIXED NAV: Using Mix-Blend-Mode and a subtle backdrop for visibility */
+        nav { 
+            mix-blend-difference: exclusion; 
+            backdrop-filter: blur(2px);
+            transition: background 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
+    <button id="reserve-btn-sticky" class="fixed bottom-8 right-8 z-[60] bg-[#C5A059] text-[#0F1112] px-8 py-4 text-[10px] tracking-[0.4em] font-bold shadow-2xl hover:scale-105 transition transform">
+        RESERVE A TABLE
+    </button>
+
+    <nav class="fixed w-full z-50 flex justify-between items-center px-8 lg:px-20 py-10">
+        <div class="font-serif text-3xl tracking-[0.3em] text-[#C5A059]">ZAYTUN</div>
+        <div class="hidden lg:flex space-x-12 text-[10px] tracking-[0.5em] uppercase font-light">
+            <a href="#story" class="nav-link hover:text-[#C5A059] transition">Le Récit</a>
+            <a href="#menu" class="nav-link hover:text-[#C5A059] transition">The Menu</a>
+            <a href="#experience" class="nav-link hover:text-[#C5A059] transition">Experience</a>
+            <a href="#contact" class="nav-link hover:text-[#C5A059] transition">Contact</a>
+        </div>
+    </nav>
+
+    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        <div id="hero-media-container" class="absolute inset-0 z-0 opacity-0 transition-opacity duration-1000"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0F1112]/40 to-[#0F1112]"></div>
+        
+        <div class="relative z-10 text-center px-4">
+            <h2 class="font-serif italic text-2xl md:text-3xl text-[#C5A059] mb-4 reveal">Fez, Morocco</h2>
+            <h1 class="font-serif text-6xl md:text-9xl font-light tracking-tighter leading-none reveal delay-100">
+                The Art of the <br>Infinite
+            </h1>
+            <p class="mt-8 text-[10px] tracking-[0.6em] uppercase opacity-60 reveal delay-200">A Sanctuary of Modern Heritage</p>
+        </div>
+    </header>
+
+    <section id="story" class="py-32 lg:py-48 px-8 lg:px-24">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+            <div class="reveal">
+                <span class="text-[#C5A059] text-[10px] tracking-[0.4em] uppercase block mb-8">Our Philosophy</span>
+                <h3 class="font-serif text-5xl md:text-6xl leading-tight mb-10">
+                    Where culinary science <br><span class="italic text-[#C5A059]">dissolves into art.</span>
+                </h3>
+                <p class="font-sans font-light text-lg leading-relaxed opacity-60 mb-8">
+                    "At Zaytun, we believe that a truly exceptional meal is not merely consumed; it is experienced. From the volcanic soils where our heritage vegetables are harvested to the precision of a chef’s final touch, every element is a deliberate act of craft."
+                </p>
+                <div class="h-[1px] w-24 bg-[#C5A059] opacity-40"></div>
+            </div>
+            <div class="relative h-[600px] reveal delay-200">
+                <img src="assets/images/pexels-valeriya-29962505.jpg" alt="Texture Shot" class="w-full h-full object-cover grayscale brightness-75">
+                <div class="absolute -bottom-6 -left-6 bg-[#C5A059] p-10 hidden lg:block">
+                    <p class="text-[#0F1112] font-serif italic text-2xl">The Chef's Table</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="bg-[#F4F1ED] text-[#0F1112] py-32 lg:py-48 px-8 lg:px-24">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-24 reveal">
+                <h2 class="font-serif text-6xl italic">Saison Actuelle</h2>
+                <p class="mt-4 text-[10px] tracking-[0.4em] uppercase opacity-50">Discovery Tasting Journey</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-x-20 gap-y-12">
+                <div class="space-y-12">
+                    <div class="menu-item pb-6 reveal">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h4 class="font-serif text-2xl">Blue Lobster Bastilla</h4>
+                            <span class="text-xs tracking-widest">650 MAD</span>
+                        </div>
+                        <p class="font-sans font-light text-xs italic opacity-60">Saffron emulsion, almond dust, garden herbs.</p>
+                    </div>
+                    <div class="menu-item pb-6 reveal delay-100">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h4 class="font-serif text-2xl">Argan-Smoked Burrata</h4>
+                            <span class="text-xs tracking-widest">240 MAD</span>
+                        </div>
+                        <p class="font-sans font-light text-xs italic opacity-60">Preserved tomato, honeycomb, basil pearls.</p>
+                    </div>
+                    <div class="menu-item pb-6 reveal delay-200">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h4 class="font-serif text-2xl">Seared Scallops & Ras el Hanout</h4>
+                            <span class="text-xs tracking-widest">380 MAD</span>
+                        </div>
+                        <p class="font-sans font-light text-xs italic opacity-60">Cauliflower silk, pomegranate reduction.</p>
+                    </div>
+                </div>
+
+                <div class="space-y-12">
+                    <div class="menu-item pb-6 reveal">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h4 class="font-serif text-2xl">48-Hour Wagyu Tanjia</h4>
+                            <span class="text-xs tracking-widest">1,200 MAD</span>
+                        </div>
+                        <p class="font-sans font-light text-xs italic opacity-60">Clay-baked, preserved lemon, Atlas truffles.</p>
+                    </div>
+                    <div class="menu-item pb-6 reveal delay-100">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h4 class="font-serif text-2xl">Herb-Crusted Rack of Lamb</h4>
+                            <span class="text-xs tracking-widest">550 MAD</span>
+                        </div>
+                        <p class="font-sans font-light text-xs italic opacity-60">Minted pea purée, glazed heritage carrots.</p>
+                    </div>
+                    <div class="menu-item pb-6 reveal delay-200">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h4 class="font-serif text-2xl">The Infinite Olive</h4>
+                            <span class="text-xs tracking-widest">220 MAD</span>
+                        </div>
+                        <p class="font-sans font-light text-xs italic opacity-60">Olive oil cake, sea salt honeycomb, black olive jam.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-24 text-center reveal">
+                <a href="#" class="text-[10px] tracking-[0.4em] uppercase border-b border-[#0F1112] pb-2 hover:text-[#C5A059] hover:border-[#C5A059] transition">
+                    View Full Wine & Spirits List
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 px-4 lg:px-24 bg-[#0F1112]">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-[700px]">
+            <div class="reveal overflow-hidden"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000" alt="Service Hand Shot"></div>
+            <div class="reveal delay-100 overflow-hidden md:mt-12"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000" alt="Architecture Shot"></div>
+            <div class="reveal delay-200 overflow-hidden"><img src="assets/images/pexels-reyhan-2155621888-35812003.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000" alt="Texture Shot"></div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-24 border-t border-white/10 px-8 lg:px-24 bg-[#0F1112]">
+        <div class="grid lg:grid-cols-3 gap-16 items-start">
+            <div>
+                <h5 class="text-[#C5A059] text-[10px] tracking-[0.4em] uppercase mb-8">Location</h5>
+                <p class="font-light opacity-60 leading-relaxed">
+                    Derb El Miter, Quartier Zenjfour,<br>Old Medina, Fez 30000, Morocco
+                </p>
+            </div>
+            <div>
+                <h5 class="text-[#C5A059] text-[10px] tracking-[0.4em] uppercase mb-8">Reservations</h5>
+                <p class="font-light opacity-60 leading-relaxed">
+                    contact@zaytunfez.com<br>+212 5 24 33 22 11
+                </p>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] tracking-[0.2em] opacity-40">© 2026 ZAYTUN FEZ</p>
+                <p class="text-[10px] tracking-[0.2em] opacity-40 mt-2 uppercase font-bold text-[#C5A059]">Formal Dress Code Required</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Initialize Smooth Scroll (Lenis)
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // HANDLE SMOOTH SCROLL ON CLICK
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    lenis.scrollTo(target);
+                }
+            });
+        });
+
+        // 2. Custom Cursor Logic
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        
+        document.addEventListener('mousemove', (e) => {
+            dot.style.left = `${e.clientX}px`;
+            dot.style.top = `${e.clientY}px`;
+            ring.style.left = `${e.clientX - 20}px`;
+            ring.style.top = `${e.clientY - 20}px`;
+        });
+
+        // 3. Dynamic Nav Visibility
+        // Adds a dark backdrop when scrolling over light sections
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = "rgba(15, 17, 18, 0.8)";
+            } else {
+                nav.style.background = "transparent";
+            }
+        });
+
+        // 4. Video Injection
+        window.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('hero-media-container');
+            const videoHTML = `
+                <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                    <source src="assets/videos/13476222_3840_2160_25fps.mp4" type="video/mp4">
+                </video>
+            `;
+            
+            setTimeout(() => {
+                container.innerHTML = videoHTML;
+                container.style.opacity = "0.5";
+            }, 500);
+        });
+
+        // 5. Scroll Reveal
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
